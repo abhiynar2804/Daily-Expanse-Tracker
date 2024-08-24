@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker with Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container1" id="login-container">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="login-username">Username</label>
+                    <input type="text" id="login-username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" name="password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#" id="show-signup">Sign Up</a></p>
+        </div>
+
+        <div class="form-container2" id="signup-container" style="display: none;">
+            <h2>Sign Up</h2>
+            <form id="signupForm">
+                <div class="input-group">
+                    <label for="signup-username">Username</label>
+                    <input type="text" id="signup-username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" name="password" required>
+                </div>
+                <div class="input-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" name="email" required>
+                </div>
+                <button type="submit">Sign Up</button>
+            </form>
+            <p>Already have an account? <a href="#" id="show-login">Login</a></p>
+        </div>
+    
+        <div class="interface" id="tracker" style="display: none;">
+            <h2>Welcome, <span id="user"></span></h2> 
+            <button onclick="logout()">Logout</button>
+            
+            <div class="summary">
+                <div>
+                    <h1>&#10004; Balance:
+                        <span id="updatedBal">00.00</span>
+                    </h1>
+                </div>
+                <br />
+                <div class="total">
+                    <div>
+                        Total Income:
+                        <div>
+                            <h2 style="color: green;" id="updatedInc">00.00</h2>
+                        </div>
+                    </div>
+                    <hr class="vertical" />
+                    <div>
+                        Total Expenses:
+                        <div>
+                            <h2 style="color: red;" id="updatedExp">00.00</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container2">
+                <h1>Expense Tracker</h1>
+                <div class="inputitem">
+                    <p class="label">Entry type:</p>
+                    <select id='itemType'>
+                        <option value="0">Expense</option>
+                        <option value="1">Income</option>
+                    </select>
+                </div>
+                <form id="expense-form">
+                    <input type="text" id="expense-name" placeholder="Expense Name" required />
+                    <input type="number" id="expense-amount" placeholder="Amount" required />
+                    <select id="expense-category" required>
+                        <option value="" disabled selected>Select Category</option>
+                        <option value="Food">Food</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <input type="date" id="expense-date" required />
+                    <button type="submit">Add Expense</button>
+                </form>
+                <div class="expense-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Expense Name</th>
+                                <th>Amount</th>
+                                <th>Category</th>
+                                <th>Date</th>
+                                <th>Action</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody id="expense-list"></tbody>
+                    </table>
+                </div>
+                <div class="filter">
+                    <label for="filter-category">Filter by Category:</label>
+                    <select id="filter-category">
+                        <option value="All">All</option>
+                        <option value="Food">Food</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
